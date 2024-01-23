@@ -7,18 +7,31 @@
     <link rel="stylesheet" href="./Assets/style.css">
 </head>
 <body>
-  <header><h2>View High Scores</h2>
-    <h3>It's the Final Countdown:</h3>
-  </header>
-    <div>
-      <h1>Coding Quiz Challenege</h1>
-      <h4>Try to answer the following code-related questions
-        within the time limit. Keep in mind that incorrect answers will penalize
-        you by 10 seconds!
-      </h4>
-      <button>Start Quiz</button>    
-    </div>
-
+  <div class="headerDiv">
+    <header>
+        <div>
+            <button>High Scores</button>
+        </div>
+        <div class="timer">
+            <h3>It's the Final Countdown:</h3>
+            <span id="countdown">00:00</span>
+        </div>    
+    </header>
+     
+    <main class="quiz-page">
+      <div>
+        <h1>
+          Coding Quiz Challenege
+        </h1>
+        <p>
+          <h4>Try to answer the following code-related questions
+            within the time limit. Keep in mind that incorrect answers will penalize
+            you by 10 seconds!
+          </h4>
+        </p>
+        <button id="btn-start">Start Quiz</button>    
+      </div>
+    </main>
     
   <script src="./Assets/script.js"></script>
 </body>

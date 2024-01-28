@@ -1,5 +1,8 @@
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
+const questionCounterText = document.getElementById('questionCounter');
+const scoreText = document.getElementById('score');
+
 
 //created variables to be used to call a new question and to populate the question/choice text of each question
 let currentQuestion = {};
@@ -51,8 +54,9 @@ let questions = [
     }
 ]
 
-//constant variables plus start game functions
-
+//constant variables plus start game and get new questions functions
+const correct_bonus = 10;
+const max_questions = 5;
 
 startGame = () => {
     questionCounter = 0;
@@ -65,10 +69,11 @@ startGame = () => {
 //plus splice removes questions which have already been answered
 //if availableQuestions equals 0 - bring user to end page
 getNewQuestions =() => {
-    if (availableQuestions.length === 0) {
+    if (availableQuestions.length === 0 || questionCounter >= max_questions) {
         return window.location.assign("./end.html");
     }
     questionCounter++;
+    questionCounterText.innerText = questionCounter + '/' + max_questions;
     const questionIndex = Math.floor(Math.random() *  availableQuestions.length);
       currentQuestion = availableQuestions[questionIndex];
       question.innerText = currentQuestion.question;
@@ -91,8 +96,26 @@ choices.forEach(choice => {
         acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset['number'];
-        getNewQuestions();
+
+        const classToApply =
+            selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
+
+            if (classToApply === 'correct') {
+                incrementScore(correct_bonus);
+            }
+
+            selectedChoice.parentElement.classList.add(classToApply);
+
+            setTimeout(()  => {
+                selectedChoice.parentElement.classList.remove(classToApply);
+                   getNewQuestions(); 
+            }, 1000);
+        });     
     });
-} );
+
+    incrementScore = num => {
+        score +=num;
+        scoreText.innerText = score;
+    }
 
 startGame();

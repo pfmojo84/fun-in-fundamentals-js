@@ -103,8 +103,11 @@ choices.forEach(choice => {
 
             if (classToApply === 'correct') {
                 incrementScore(correct_bonus);
+            } else {
+                //decrease timer when question is answered incorrectly
+                timeLeft -=15;
             }
-
+            
             selectedChoice.parentElement.classList.add(classToApply);
 
             setTimeout(()  => {

@@ -15,11 +15,14 @@ username.addEventListener('keyup', () => {
     saveScoreBtn.disabled = !username.value;
 });
 
+//save top five scores to local storage and add score to list
+//sort list and cut off anything that does not meet minimum score of top scores
+
 saveHighScore = (e) => {
     e.preventDefault();
 
   const score = {
-      score: Math.floor(Math.random() * 100),
+      score: mostRecentScore,
       name: username.value
   };
   highScores.push(score);

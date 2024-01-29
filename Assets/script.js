@@ -119,4 +119,18 @@ choices.forEach(choice => {
         scoreText.innerText = score;
     }
 
+//creating function to update timer for every second
+const timerElement = document.getElementById('timer');
+let timeLeft = 75;
+//start timer
+const timerInterval = setInterval(() => {
+    timeLeft--;
+     timerElement.textContent = timeLeft;
+//redirect to end page when timer reaches 0
+     if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        window.location.href = "end.html";
+     }
+}, 1000);  
+
 startGame();

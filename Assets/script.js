@@ -1,3 +1,4 @@
+//query from class 'choice-text' with custom data attribute applied to each element in game.html
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
 const questionCounterText = document.getElementById('questionCounter');
@@ -10,7 +11,7 @@ let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
-
+//dynamically pull questions from the following array
 let questions = [
     {
         question: "Commonly used data types DO NOT include:",
@@ -66,7 +67,7 @@ startGame = () => {
 };
 
 //if questions availabe - question counter cycles through question index and selects new question
-//plus splice removes questions which have already been answered
+//splice removes questions which have already been answered
 //if availableQuestions equals 0 - bring user to end page
 getNewQuestions =() => {
     if (availableQuestions.length === 0 || questionCounter >= max_questions) {
@@ -75,10 +76,17 @@ getNewQuestions =() => {
     }
     questionCounter++;
     questionCounterText.innerText = questionCounter + '/' + max_questions;
+
+//create questionIndex to pull available question when available questions remain
     const questionIndex = Math.floor(Math.random() *  availableQuestions.length);
       currentQuestion = availableQuestions[questionIndex];
+
+//load questions from array and populate in the question element
       question.innerText = currentQuestion.question;
 
+//loading text from choice array as defined in the Array.from(document.getElementsByClassName("choice-text"))
+//pull choice property and data attribute number that is associated with it to get the appropriate choice 
+//for the corresponding question
       choices.forEach( choice => {
         const number = choice.dataset['number'];
         choice.innerText = currentQuestion['choice' + number];
@@ -90,6 +98,10 @@ getNewQuestions =() => {
 
 };
 
+//initialize mostRecentScore as 0
+let mostRecentScore = 0;
+//!acceptingAnswers and acceptingAnswers = false will create a short delay between questions. 
+//Accepting answers value is changed to true after the choice is made and the availableQuestions have been spliced
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
         if(!acceptingAnswers) return;
@@ -101,15 +113,16 @@ choices.forEach(choice => {
         const classToApply =
             selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
 
+//check if answer is correct and increase score based on correct_bonus            
             if (classToApply === 'correct') {
                 incrementScore(correct_bonus);
             } else {
-                //decrease timer when question is answered incorrectly
+//decrease timer when question is answered incorrectly
                 timeLeft -=15;
             }
             
             selectedChoice.parentElement.classList.add(classToApply);
-
+//add delay before correct or incorrect class is applied. remove class and getNewQuestion
             setTimeout(()  => {
                 selectedChoice.parentElement.classList.remove(classToApply);
                    getNewQuestions(); 

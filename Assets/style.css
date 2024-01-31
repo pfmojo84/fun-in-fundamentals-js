@@ -1,10 +1,12 @@
 /*Set default font size to 10px using 62.5% for rem reference. Using rem as sizing format to provide better responsiveness and readability*/
 
+
 :root {
   background-color: #ecf5ff;
   font-size: 62.5%;
 }
-
+/*border-box will include width of border in calculated size of box*/
+/*reset all margin and padding*/
 * {
   font-family: 'Nunito', sans-serif;
   box-sizing: border-box;
@@ -39,7 +41,8 @@ h3 {
   font-weight: 500;
 }
 
-/*Utility Classes*/
+/*Utility Classes - sets flexbox attributes -.container and children will be centered in page as width/height are set to take up full view width/height*/
+/*80rem with margin settings will keep item centered horizontally regardless of screensize*/
 
 .container {
   width: 100vw;

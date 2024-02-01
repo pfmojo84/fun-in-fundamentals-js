@@ -103,8 +103,8 @@ getNewQuestions =() => {
 
 };
 
-//initialize mostRecentScore as 0
-let mostRecentScore = 0;
+//initialize mostRecentScore as as the valued stored in the browsers local storage or 0 if there is no value stored
+let mostRecentScore = localStorage.getItem('mostRecentScore') || 0;
 //!acceptingAnswers and acceptingAnswers = false will create a short delay between questions. 
 //Accepting answers value is changed to true after the choice is made and the availableQuestions have been spliced
 choices.forEach(choice => {
@@ -123,7 +123,7 @@ choices.forEach(choice => {
                 incrementScore(correct_bonus);
             } else {
 //decrease timer when question is answered incorrectly
-                timeLeft -=15;
+                timeLeft -=10;
             }
             
             selectedChoice.parentElement.classList.add(classToApply);
@@ -138,6 +138,9 @@ choices.forEach(choice => {
     incrementScore = num => {
         score +=num;
         scoreText.innerText = score;
+        mostRecentScore = score;
+//whenever the 'score' is updated, the mostRecentScore variable will be updated accordingly
+        localStorage.setItem('mostRecentScore', mostRecentScore);
     }
 
 //creating function to update timer for every second

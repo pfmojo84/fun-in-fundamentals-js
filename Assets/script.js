@@ -152,6 +152,8 @@ const timerInterval = setInterval(() => {
      timerElement.textContent = timeLeft;
 //redirect to end page when timer reaches 0
      if (timeLeft <= 0) {
+        mostRecentScore = score;
+        localStorage.setItem('mostRecentScore', mostRecentScore);
         clearInterval(timerInterval);
         window.location.href = "end.html";
      }

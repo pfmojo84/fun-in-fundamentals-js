@@ -3,13 +3,10 @@ const saveScoreBtn = document.getElementById('saveScoreBtn');
 const finalScore = document.getElementById('finalScore');
 const mostRecentScore = localStorage.getItem('mostRecentScore');
 
+
 const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 
 const MAX_HIGH_SCORES = 5;
-
-//commented out the following line as it was returning an empty array every time the page loaded. this caused an error
-//when clicking "go home" instead of saving a score as all saved scores would be removed
-//localStorage.setItem('highScores', JSON.stringify([]));
 
 finalScore.innerText = mostRecentScore;
 
@@ -23,8 +20,6 @@ username.addEventListener('keyup', () => {
 saveHighScore = (e) => {
     e.preventDefault();
 
-  const mostRecentScore = localStorage.getItem('mostRecentScore');
- 
 //check if the user got no answers correct and if so, give 0 as score. if not, assign mostRecentScore
   const score = {
    score: (mostRecentScore === '0' ? 0 : parseInt(mostRecentScore)),

@@ -1,5 +1,6 @@
 //query from class 'choice-text' with custom data attribute applied to each element in game.html
 const question = document.getElementById("question");
+//need to convert class to array as other functions will need to work with the data as an array 
 const choices = Array.from(document.getElementsByClassName("choice-text"));
 const questionCounterText = document.getElementById('questionCounter');
 const scoreText = document.getElementById('score');
@@ -12,6 +13,7 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 //dynamically pull questions from the following array
+//checking for 'correctness' if the number in the 'choice' matches up with the number in 'answer'
 let questions = [
     {
         question: "Commonly used data types DO NOT include:",
@@ -59,6 +61,9 @@ let questions = [
 const correct_bonus = 10;
 const max_questions = 5;
 
+//use of spread operator to take 'questions' array and create a full copy in the new 'availableQuestions' array
+//this is necessary because if we set the value of 'availableQuestions' - 'questions' w/o spread operator
+//any changes made to one object would effect the other objects
 startGame = () => {
     questionCounter = 0;
     score = 0;
@@ -125,7 +130,7 @@ choices.forEach(choice => {
 //add delay before correct or incorrect class is applied. remove class and getNewQuestion
             setTimeout(()  => {
                 selectedChoice.parentElement.classList.remove(classToApply);
-                   getNewQuestions(); 
+                   getNewQuestions();  
             }, 1000);
         });     
     });

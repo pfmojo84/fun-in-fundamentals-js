@@ -14,6 +14,9 @@ I found myself struggling with styling the landing page and questions so I am us
 I added the timer functions and set the timer to decrease if a user gets a question incorrect. I also set the high scores to include the top five highest scores and splice after the top scores are set.<p> 
 This was a challenging but fun assignment and I'm grateful for the help of the BCS teaching assistants and my professor for helping me debug issues I had with the timer, high scores, and local storage. On to Challenge #5!
 
+Link to GitHub: https://github.com/pfmojo84/fun-in-fundamentals-js
+Link to Quiz: https://pfmojo84.github.io/fun-in-fundamentals-js/index.html 
+
 
 ![Landing Page](<Screenshots/Screenshot 2024-02-02 at 8.43.03 AM 2.png>)
 

@@ -10,5 +10,15 @@ Overview of project process:<p>
     local storage - save user info and store to browser storage
 
 After beginning the project and attempting to build the page from scratch, I am going to use a YT tutorial put together by James Q Quick for guidance. 
-I found myself struggling with styling the landing page and questions so I am using this tutorial to give me the basis for why and how styling and 
-used and I will adjust items to meet my own design guidelines after completing the buildout of the framework based on the tutorial. 
+I found myself struggling with styling the landing page and questions so I am using this tutorial to give me the basis for functionality and design. 
+I added the timer functions and set the timer to decrease if a user gets a question incorrect. I also set the high scores to include the top five highest scores and splice after the top scores are set.<p> 
+This was a challenging but fun assignment and I'm grateful for the help of the BCS teaching assistants and my professor for helping me debug issues I had with the timer, high scores, and local storage. On to Challenge #5!
+
+
+![Landing Page](<Screenshots/Screenshot 2024-02-02 at 8.43.03 AM 2.png>)
+
+![Quiz Start](<Screenshots/Screenshot 2024-02-02 at 8.43.26 AM (2).png>)
+
+![End Page](<Screenshots/Screenshot 2024-02-02 at 8.43.51 AM (2).png>)
+
+![High Scores](<Screenshots/Screenshot 2024-02-02 at 8.43.58 AM (2).png>)
